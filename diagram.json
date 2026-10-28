@@ -1,0 +1,429 @@
+{
+    "version": 1,
+    "author": "Advanced Textile Monitor",
+    "editor": "wokwi",
+    "parts": [
+        {
+            "type": "wokwi-arduino-mega",
+            "id": "mega",
+            "top": 120,
+            "left": 80,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-ssd1306",
+            "id": "oled",
+            "top": -80,
+            "left": 400,
+            "attrs": {
+                "i2cAddress": "0x3c"
+            }
+        },
+        {
+            "type": "wokwi-mpu6050",
+            "id": "mpu",
+            "top": -70,
+            "left": 590,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-ds18b20",
+            "id": "temp",
+            "top": 250,
+            "left": 580,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-slide-potentiometer",
+            "id": "current_sensor",
+            "top": 150,
+            "left": 450,
+            "attrs": {
+                "travelLength": "30"
+            }
+        },
+        {
+            "type": "wokwi-rotary-encoder",
+            "id": "encoder",
+            "top": -70,
+            "left": 800,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-pushbutton",
+            "id": "btnBreak",
+            "top": 80,
+            "left": 820,
+            "attrs": {
+                "color": "red",
+                "label": "YARN BREAK"
+            }
+        },
+        {
+            "type": "wokwi-pushbutton",
+            "id": "btnPackage",
+            "top": 150,
+            "left": 820,
+            "attrs": {
+                "color": "yellow",
+                "label": "PACKAGE"
+            }
+        },
+        {
+            "type": "wokwi-pushbutton",
+            "id": "btnAck",
+            "top": 220,
+            "left": 820,
+            "attrs": {
+                "color": "blue",
+                "label": "ACK"
+            }
+        },
+        {
+            "type": "wokwi-led",
+            "id": "ledGreen",
+            "top": -20,
+            "left": 1000,
+            "attrs": {
+                "color": "green",
+                "label": "NORMAL"
+            }
+        },
+        {
+            "type": "wokwi-led",
+            "id": "ledYellow",
+            "top": 30,
+            "left": 1000,
+            "attrs": {
+                "color": "yellow",
+                "label": "WARNING"
+            }
+        },
+        {
+            "type": "wokwi-led",
+            "id": "ledRed",
+            "top": 80,
+            "left": 1000,
+            "attrs": {
+                "color": "red",
+                "label": "CRIT"
+            }
+        },
+        {
+            "type": "wokwi-resistor",
+            "id": "rGreen",
+            "top": -20,
+            "left": 1070,
+            "attrs": {
+                "value": "220"
+            }
+        },
+        {
+            "type": "wokwi-resistor",
+            "id": "rYellow",
+            "top": 30,
+            "left": 1070,
+            "attrs": {
+                "value": "220"
+            }
+        },
+        {
+            "type": "wokwi-resistor",
+            "id": "rRed",
+            "top": 80,
+            "left": 1070,
+            "attrs": {
+                "value": "220"
+            }
+        },
+        {
+            "type": "wokwi-buzzer",
+            "id": "buzzer",
+            "top": 160,
+            "left": 1000,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-microsd-card",
+            "id": "sd",
+            "top": 280,
+            "left": 800,
+            "attrs": {}
+        },
+        {
+            "type": "wokwi-resistor",
+            "id": "rPullup",
+            "top": 330,
+            "left": 620,
+            "attrs": {
+                "value": "4.7k"
+            }
+        }
+    ],
+    "connections": [
+        [
+            "mega:20",
+            "oled:SDA",
+            "green",
+            []
+        ],
+        [
+            "mega:21",
+            "oled:SCL",
+            "green",
+            []
+        ],
+        [
+            "mega:5V",
+            "oled:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.1",
+            "oled:GND",
+            "black",
+            []
+        ],
+        [
+            "mega:20",
+            "mpu:SDA",
+            "green",
+            []
+        ],
+        [
+            "mega:21",
+            "mpu:SCL",
+            "green",
+            []
+        ],
+        [
+            "mega:5V",
+            "mpu:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.1",
+            "mpu:GND",
+            "black",
+            []
+        ],
+        [
+            "mega:4",
+            "temp:DQ",
+            "green",
+            []
+        ],
+        [
+            "mega:5V",
+            "temp:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.2",
+            "temp:GND",
+            "black",
+            []
+        ],
+        [
+            "mega:5V",
+            "rPullup:1",
+            "red",
+            []
+        ],
+        [
+            "rPullup:2",
+            "temp:DQ",
+            "green",
+            []
+        ],
+        [
+            "mega:5V",
+            "current_sensor:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.1",
+            "current_sensor:GND",
+            "black",
+            []
+        ],
+        [
+            "mega:A1",
+            "current_sensor:SIG",
+            "purple",
+            []
+        ],
+        [
+            "mega:2",
+            "encoder:CLK",
+            "green",
+            []
+        ],
+        [
+            "mega:3",
+            "encoder:DT",
+            "blue",
+            []
+        ],
+        [
+            "mega:5",
+            "encoder:SW",
+            "orange",
+            []
+        ],
+        [
+            "mega:5V",
+            "encoder:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.2",
+            "encoder:GND",
+            "black",
+            []
+        ],
+        [
+            "mega:6",
+            "btnBreak:1.l",
+            "green",
+            []
+        ],
+        [
+            "mega:GND.3",
+            "btnBreak:2.l",
+            "black",
+            []
+        ],
+        [
+            "mega:7",
+            "btnPackage:1.l",
+            "green",
+            []
+        ],
+        [
+            "mega:GND.3",
+            "btnPackage:2.l",
+            "black",
+            []
+        ],
+        [
+            "mega:8",
+            "btnAck:1.l",
+            "green",
+            []
+        ],
+        [
+            "mega:GND.3",
+            "btnAck:2.l",
+            "black",
+            []
+        ],
+        [
+            "mega:30",
+            "rGreen:1",
+            "green",
+            []
+        ],
+        [
+            "rGreen:2",
+            "ledGreen:A",
+            "green",
+            []
+        ],
+        [
+            "ledGreen:C",
+            "mega:GND.4",
+            "black",
+            []
+        ],
+        [
+            "mega:31",
+            "rYellow:1",
+            "green",
+            []
+        ],
+        [
+            "rYellow:2",
+            "ledYellow:A",
+            "green",
+            []
+        ],
+        [
+            "ledYellow:C",
+            "mega:GND.4",
+            "black",
+            []
+        ],
+        [
+            "mega:32",
+            "rRed:1",
+            "green",
+            []
+        ],
+        [
+            "rRed:2",
+            "ledRed:A",
+            "green",
+            []
+        ],
+        [
+            "ledRed:C",
+            "mega:GND.4",
+            "black",
+            []
+        ],
+        [
+            "mega:33",
+            "buzzer:1",
+            "green",
+            []
+        ],
+        [
+            "mega:GND.4",
+            "buzzer:2",
+            "black",
+            []
+        ],
+        [
+            "mega:53",
+            "sd:CS",
+            "green",
+            []
+        ],
+        [
+            "mega:52",
+            "sd:CLK",
+            "green",
+            []
+        ],
+        [
+            "mega:50",
+            "sd:DO",
+            "blue",
+            []
+        ],
+        [
+            "mega:51",
+            "sd:DI",
+            "orange",
+            []
+        ],
+        [
+            "mega:5V",
+            "sd:VCC",
+            "red",
+            []
+        ],
+        [
+            "mega:GND.5",
+            "sd:GND",
+            "black",
+            []
+        ]
+    ]
+}
